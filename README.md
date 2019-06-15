@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/leblancjs/blocoffee.svg?branch=master)](https://travis-ci.org/leblancjs/blocoffee)
+[![codecov](https://codecov.io/gh/leblancjs/blocoffee/branch/master/graph/badge.svg)](https://codecov.io/gh/leblancjs/blocoffee)
 [![License: MIT](https://img.shields.io/badge/License-MIT-purple.svg)](https://opensource.org/licenses/MIT)
 
 # BLoCoffee
