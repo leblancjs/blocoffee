@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.org/leblancjs/blocoffee.svg?branch=master)](https://travis-ci.org/leblancjs/blocoffee)
+[![License: MIT](https://img.shields.io/badge/License-MIT-purple.svg)](https://opensource.org/licenses/MIT)
+
 # BLoCoffee
 A Java translation of [Felix Angelov](https://github.com/felangel)'s [Bloc](https://github.com/felangel/bloc) library,
 which is a predictable state management library that helps implement the
