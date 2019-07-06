@@ -46,7 +46,7 @@ public class TransitionTest {
     @Test
     public void equals_doesNotMatchWithOtherClasses() {
         final Transition<String, String> transition = new Transition<>(CURRENT_STATE, EVENT, NEXT_STATE);
-        final Transition<Object, String> transitionToCompareWith = new Transition<>(CURRENT_STATE, new Object(), NEXT_STATE);
+        final Object transitionToCompareWith = new Object();
         assertNotEquals(transition, transitionToCompareWith);
     }
 
