@@ -31,12 +31,15 @@ public abstract class Bloc<Event, State> implements AutoCloseable {
 
     public abstract void onEvent(final Event event);
 
+    public abstract void onTransition(final Transition<Event, State> transition);
+
     public abstract void onError(final Throwable error);
 
     public void dispatch(final Event event) {
         try {
             BlocSupervisor.instance().getDelegate().ifPresent(d -> d.onEvent(this, event));
             onEvent(event);
+            eventSubject.onNext(event);
         } catch (final Exception error) {
             handleError(error);
         }
@@ -60,6 +63,7 @@ public abstract class Bloc<Event, State> implements AutoCloseable {
 
             final Transition<Event, State> transition = new Transition<>(currentState, currentEvent.get(), nextState);
             BlocSupervisor.instance().getDelegate().ifPresent(d -> d.onTransition(this, transition));
+            onTransition(transition);
             stateSubject.onNext(nextState);
         });
     }
