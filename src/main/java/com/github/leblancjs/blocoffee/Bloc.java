@@ -50,10 +50,11 @@ public abstract class Bloc<Event, State> implements AutoCloseable {
     }
 
     private Disposable bindStateSubject() {
+        // TODO: Figure out how to manage transitions...
         final AtomicReference<Event> currentEvent = new AtomicReference<>();
 
         return transform(eventSubject, event -> {
-            currentEvent.set(event);
+//            currentEvent.set(event);
             return mapEventToState(event).doOnError(this::handleError);
         }).forEach(nextState -> {
             final State currentState = getCurrentState();
@@ -61,9 +62,9 @@ public abstract class Bloc<Event, State> implements AutoCloseable {
                 return;
             }
 
-            final Transition<Event, State> transition = new Transition<>(currentState, currentEvent.get(), nextState);
-            BlocSupervisor.instance().getDelegate().ifPresent(d -> d.onTransition(this, transition));
-            onTransition(transition);
+//            final Transition<Event, State> transition = new Transition<>(currentState, currentEvent.get(), nextState);
+//            BlocSupervisor.instance().getDelegate().ifPresent(d -> d.onTransition(this, transition));
+//            onTransition(transition);
             stateSubject.onNext(nextState);
         });
     }
